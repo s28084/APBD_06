@@ -71,11 +71,22 @@ public class AnimalsRepository : IAnimalsRepository
 
     public int UpdateAnimal(Animal animal)
     {
-        throw new NotImplementedException();
+        using var con = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
+        con.Open();
+
+        using var cmd = new SqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "UPDATE Animal SET Name=@Name, Description=@Description, Category=@Category, Area=@Area";
+        cmd.Parameters.AddWithValue("@Name", animal.Name);
+        cmd.Parameters.AddWithValue("@Description", animal.Description);
+        cmd.Parameters.AddWithValue("@Category", animal.Category);
+        cmd.Parameters.AddWithValue("@Area", animal.Area);
+
+        return cmd.ExecuteNonQuery();
     }
 
     public int DeleteAnimal(int idAnimal)
     {
-        throw new NotImplementedException();
+        
     }
 }
