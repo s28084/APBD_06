@@ -13,7 +13,7 @@ public class AnimalsService : IAnimalsService
         _animalsRepository = animalsRepository;
     }
 
-    public IEnumerable<Animal> GetAnimals()
+    public IEnumerable<Animal> GetAnimals(string orderBy = "Name")
     {
         var data = _animalsRepository.GetAnimals();
         //Logika
