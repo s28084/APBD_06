@@ -6,4 +6,6 @@ public interface IAnimalsService
 {
     IEnumerable<Animal> GetAnimals();
     int CreateAnimal(Animal animal);
+    int UpdateAnimal(Animal animal);
+    int DeleteAnimal(int idAnimal);
 }

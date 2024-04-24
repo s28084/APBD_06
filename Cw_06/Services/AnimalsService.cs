@@ -15,7 +15,7 @@ public class AnimalsService : IAnimalsService
 
     public IEnumerable<Animal> GetAnimals()
     {
-        var data = _animalsRepository.FetchAnimals();
+        var data = _animalsRepository.GetAnimals();
         //Logika
         return data;
     }
@@ -23,7 +23,18 @@ public class AnimalsService : IAnimalsService
     public int CreateAnimal(Animal animal)
     {
         //Logika
-        //_animals.Add(animal);
-        return 1;
+        return _animalsRepository.CreateAnimal(animal);
+    }
+
+    public int UpdateAnimal(Animal animal)
+    {
+        //Logika
+        return _animalsRepository.UpdateAnimal(animal);
+    }
+
+    public int DeleteAnimal(int idAnimal)
+    {
+        //Logika
+        return _animalsRepository.DeleteAnimal(idAnimal);
     }
 }

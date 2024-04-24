@@ -29,33 +29,17 @@ public class AnimalsController : ControllerBase
         return StatusCode(StatusCodes.Status201Created);
     }
 
-    /*[HttpPut("{id:int}")]
+    [HttpPut("{id:int}")]
     public IActionResult UpdateAnimal(int id, Animal animal)
     {
-        var animalToEdit = _animals.FirstOrDefault(a => a.IdAnimal == id);
-
-        if (animalToEdit == null)
-        {
-            return NotFound($"Animal with id {id} was not found");
-        }
-
-        _animals.Remove(animalToEdit);
-        _animals.Add(animal);
+        _animalService.UpdateAnimal(animal);
         return NoContent();
     }
 
     [HttpDelete("{id:int}")]
     public IActionResult DeleteAnimal(int id)
     {
-        var animalToRemove = _animals.FirstOrDefault(a => a.IdAnimal == id);
-        if (animalToRemove == null)
-        {
-            return NoContent();
-        }
-
-        _animals.Remove(animalToRemove);
+        _animalService.DeleteAnimal(id);
         return NoContent();
-    }*/
-    
-    
+    }
 }
