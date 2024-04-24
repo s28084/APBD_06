@@ -1,25 +1,29 @@
 using Cw_06.Models;
+using Cw_06.Repositories;
 
 namespace Cw_06.Services;
 
 public class AnimalsService : IAnimalsService
 {
-    private static readonly List<Animal> _animals = new()
+
+    private readonly IAnimalsRepository _animalsRepository;
+    
+    public AnimalsService(IAnimalsRepository animalsRepository)
     {
-        new Animal {IdAnimal = 1, Name = "Tiger", Description = "dangerous, orange", Category = "Exotic", Area = "Asia"},
-        new Animal { IdAnimal = 2, Name = "Fox", Description = "orange", Category = "local", Area = "Europe"}
-    };
+        _animalsRepository = animalsRepository;
+    }
 
     public IEnumerable<Animal> GetAnimals()
     {
+        var data = _animalsRepository.FetchAnimals();
         //Logika
-        return _animals;
+        return data;
     }
 
     public int CreateAnimal(Animal animal)
     {
         //Logika
-        _animals.Add(animal);
+        //_animals.Add(animal);
         return 1;
     }
 }
